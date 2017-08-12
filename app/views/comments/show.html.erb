@@ -1,0 +1,19 @@
+<h1><%= @comment.title%></h1>
+
+<%= button_to "いいね",comment_likes_path(@comment.id)%>(<%=@comment.likes.count%>)
+
+<ul>
+  <%@comment.tasks.each do |task|%>
+  <li>
+    <%=task.title%>
+    <%= link_to "Delete",comment_task_path(task.comment_id,task.id),method: :delete,data:{confirm:"are you sure?"} %>
+  </li>
+  <%end%>
+  <li>
+    <%=form_for [@comment,@comment.tasks.build] do |f|%>
+    コメントする
+    <%=f.text_field :title%>
+    <%=f.submit%>
+    <%end%>
+  </li>
+</ul>

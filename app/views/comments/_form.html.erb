@@ -1,0 +1,9 @@
+
+<%= form_for @comment do |f|%>
+  <%= f.label :title%>
+  <%=f.text_field :title%>
+  <% if @comment.errors.any? %>
+  <%= @comment.errors.messages[:title][0] %>
+  <%end%>
+  <%= f.submit%>
+<% end %>
